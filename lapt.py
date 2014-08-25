@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- charset= utf-8 -*-
 
-from flask import Flask, request
+from flask import Flask, request, render_template
 app = Flask(__name__)
 
 
@@ -19,18 +19,10 @@ def visitor_login(uid):
 def visitor_resigtration():
     ''':uid: visitor tooken, ie: mobile number'''
     if request.method == 'POST':
-        return 'visitor_resigtration [POST]'
+        return render_template('module.html', body=name)
     else:
-        return 'visitor_resigtration [GET]'
-    return 'visitor_resigtration (ERROR)'
-
-# DB stuff
-
-def db_get():
-    pass
-
-def db_set():
-    pass
+        return render_template('module.html', body=name)
+    return render_template('module.html', title="Error 404", body="Page not found!")
 
 
 if __name__ == '__main__':
